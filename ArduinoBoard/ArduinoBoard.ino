@@ -4,6 +4,7 @@
     Name:       NodeControlMrTinh.ino
     Created:	7/12/2018 8:54:15 AM
     Author:     DESKTOP-PVDO71Q\tdhie
+	Version:	0.3
 */
 
 // Define User Types below here or use a .h file
@@ -18,7 +19,7 @@
 //data Json
 #define SPRAY			"S"
 #define S_HUMI			"H"
-#define ON				"N"
+#define ON				"T"
 #define OFF				"F"
 
 //Pin In Out
@@ -77,6 +78,7 @@ void ReadSS(uint32_t time_s_Refresh) {
 		timeUD = millis();
 		for (uint8_t i = plant_1; i <= plant_8; i++) {
 			S_huminity[i] = Read_Humi(i + PLANT1_S_HUMI);
+			S_huminity[i] = map(S_huminity[i], 0, 1023, 100, 0);
 		}
 	}
 }
@@ -116,7 +118,7 @@ void Control() {
 		for (uint8_t i = plant_1; i <= plant_8; i++) {
 			String sprayRece = JsRecevie[SPRAY + String(i)];
 			sprayRece == ON ? SttSpray[i] = true : SttSpray[i] = false;
-			digitalWrite(PLANT1_SPRAY + i, SttSpray[i]);
+			digitalWrite(PLANT1_SPRAY + i, !SttSpray[i]);
 		}
 		UpData();
 	}

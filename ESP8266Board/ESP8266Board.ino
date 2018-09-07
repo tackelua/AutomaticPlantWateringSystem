@@ -1,9 +1,10 @@
 // Visual Micro is in vMicro>General>Tutorial Mode
 // 
 /*
-    Name:       HubControlTinh.ino
-    Created:	7/13/2018 8:43:13 AM
-    Author:     DESKTOP-PVDO71Q\tdhie
+	Name:       HubControlTinh.ino
+	Created:	7/13/2018 8:43:13 AM
+	Author:     DESKTOP-PVDO71Q\tdhie
+	Version:	0.3
 */
 
 // Define User Types below here or use a .h file
@@ -40,14 +41,14 @@ char auth[] = "7a638e14f84d4a04b7702882d737aec5";
 
 #define WATER_LEVEL				V10
 #define DISPLAY_MAIN			V11
-#define	BUTTON_PUM_MAIN			V12		
+#define	BUTTON_PUMP_MAIN		V12		
 #define	BUTTON_AUTO				V13
 
 #define NAME_PLANTS1			V20
 #define	DISPLAY_PLANTS1			V21
-#define	BUTTON_PUM_PLANTS1		V22
+#define	BUTTON_PUMP_PLANTS1		V22
 #define	BUTTON_AUTO_PLANTS1		V23
-#define	HIGHER_LIMIT_PLANTS1		V24
+#define	HIGHER_LIMIT_PLANTS1	V24
 #define	LOWER_LIMIT_PLANTS1		V25
 #define	CHART_HUMI_PLANTS1		V26
 #define	CHART_SPRAY_PLANTS1		V23
@@ -55,9 +56,9 @@ char auth[] = "7a638e14f84d4a04b7702882d737aec5";
 
 #define NAME_PLANTS2			V30
 #define	DISPLAY_PLANTS2			V31
-#define	BUTTON_PUM_PLANTS2		V32
+#define	BUTTON_PUMP_PLANTS2		V32
 #define	BUTTON_AUTO_PLANTS2		V33
-#define	HIGHER_LIMIT_PLANTS2		V34
+#define	HIGHER_LIMIT_PLANTS2	V34
 #define	LOWER_LIMIT_PLANTS2		V35
 #define	CHART_HUMI_PLANTS2		V36
 #define	CHART_SPRAY_PLANTS2		V33
@@ -65,9 +66,9 @@ char auth[] = "7a638e14f84d4a04b7702882d737aec5";
 
 #define NAME_PLANTS3			V40
 #define	DISPLAY_PLANTS3			V41
-#define	BUTTON_PUM_PLANTS3		V42
+#define	BUTTON_PUMP_PLANTS3		V42
 #define	BUTTON_AUTO_PLANTS3		V43
-#define	HIGHER_LIMIT_PLANTS3		V44
+#define	HIGHER_LIMIT_PLANTS3	V44
 #define	LOWER_LIMIT_PLANTS3		V45
 #define	CHART_HUMI_PLANTS3		V46
 #define	CHART_SPRAY_PLANTS3		V43
@@ -75,9 +76,9 @@ char auth[] = "7a638e14f84d4a04b7702882d737aec5";
 
 #define NAME_PLANTS4			V50
 #define	DISPLAY_PLANTS4			V51
-#define	BUTTON_PUM_PLANTS4		V52
+#define	BUTTON_PUMP_PLANTS4		V52
 #define	BUTTON_AUTO_PLANTS4		V53
-#define	HIGHER_LIMIT_PLANTS4		V54
+#define	HIGHER_LIMIT_PLANTS4	V54
 #define	LOWER_LIMIT_PLANTS4		V55
 #define	CHART_HUMI_PLANTS4		V56
 #define	CHART_SPRAY_PLANTS4		V53
@@ -85,9 +86,9 @@ char auth[] = "7a638e14f84d4a04b7702882d737aec5";
 
 #define NAME_PLANTS5			V60
 #define	DISPLAY_PLANTS5			V61
-#define	BUTTON_PUM_PLANTS5		V62
+#define	BUTTON_PUMP_PLANTS5		V62
 #define	BUTTON_AUTO_PLANTS5		V63
-#define	HIGHER_LIMIT_PLANTS5		V64
+#define	HIGHER_LIMIT_PLANTS5	V64
 #define	LOWER_LIMIT_PLANTS5		V65
 #define	CHART_HUMI_PLANTS5		V66
 #define	CHART_SPRAY_PLANTS5		V63
@@ -95,9 +96,9 @@ char auth[] = "7a638e14f84d4a04b7702882d737aec5";
 
 #define NAME_PLANTS6			V70
 #define	DISPLAY_PLANTS6			V71
-#define	BUTTON_PUM_PLANTS6		V72
+#define	BUTTON_PUMP_PLANTS6		V72
 #define	BUTTON_AUTO_PLANTS6		V73
-#define	HIGHER_LIMIT_PLANTS6		V74
+#define	HIGHER_LIMIT_PLANTS6	V74
 #define	LOWER_LIMIT_PLANTS6		V75
 #define	CHART_HUMI_PLANTS6		V76
 #define	CHART_SPRAY_PLANTS6		V73
@@ -105,9 +106,9 @@ char auth[] = "7a638e14f84d4a04b7702882d737aec5";
 
 #define NAME_PLANTS7			V80
 #define	DISPLAY_PLANTS7			V81
-#define	BUTTON_PUM_PLANTS7		V82
+#define	BUTTON_PUMP_PLANTS7		V82
 #define	BUTTON_AUTO_PLANTS7		V83
-#define	HIGHER_LIMIT_PLANTS7		V84
+#define	HIGHER_LIMIT_PLANTS7	V84
 #define	LOWER_LIMIT_PLANTS7		V85
 #define	CHART_HUMI_PLANTS7		V86
 #define	CHART_SPRAY_PLANTS7		V83
@@ -115,9 +116,9 @@ char auth[] = "7a638e14f84d4a04b7702882d737aec5";
 
 #define NAME_PLANTS8			V90
 #define	DISPLAY_PLANTS8			V91
-#define	BUTTON_PUM_PLANTS8		V92
+#define	BUTTON_PUMP_PLANTS8		V92
 #define	BUTTON_AUTO_PLANTS8		V93
-#define	HIGHER_LIMIT_PLANTS8		V94
+#define	HIGHER_LIMIT_PLANTS8	V94
 #define	LOWER_LIMIT_PLANTS8		V95
 #define	CHART_HUMI_PLANTS8		V96
 #define	CHART_SPRAY_PLANTS8		V93
@@ -140,12 +141,12 @@ WidgetLED						LedPlants8(LED_STATUS_PLANTS8);
 //Data Json
 #define SPRAY					"S"
 #define	S_HUMI					"H"
-#define	ON						"O"
-#define	OFF						"O"
+#define	ON						"T"
+#define	OFF						"F"
 
 //Define Harware configuration
 #ifdef HieuTest
-#define PUM_MAIN		D2
+#define PUMP_MAIN		D2
 #define LOW_WARTER		D6
 #define HIGH_WARTER		D7
 #define LED_STT			D4
@@ -158,16 +159,16 @@ WidgetLED						LedPlants8(LED_STATUS_PLANTS8);
 
 //Value
 bool	sttSendN = 0;
-bool	leverWarter[2];
-bool	SttPumMain;
+bool	levelWarter[2];
+bool	SttPumpMain;
 bool	ActivityStt;
 
-bool	SttHumi[8],	SttBAPlans[8];
+bool	SttHumi[8], SttBAPlans[8];
 bool	SttSpray[8], BufSttSpray[8];
 int		limLow[8], limHigh[8];
 int		SHumidity[8];
 
-enum LeverWarter
+enum LevelWarter
 {
 	lowWater, HighWarter
 };
@@ -181,8 +182,8 @@ enum Plants
 void ConfigIO() {
 	pinMode(LOW_WARTER, INPUT);
 	pinMode(HIGH_WARTER, INPUT);
-	pinMode(PUM_MAIN, OUTPUT);
-	digitalWrite(PUM_MAIN,LOW);
+	pinMode(PUMP_MAIN, OUTPUT);
+	digitalWrite(PUMP_MAIN, HIGH);
 	pinMode(LED_STT, OUTPUT);
 	digitalWrite(LED_STT, LOW);
 }
@@ -203,19 +204,19 @@ void SendData(void) {
 void updateNode(uint8_t time_s) {
 	uint8_t i = plants_1;
 	static unsigned long timeud = millis();
-	
+
 	if (millis() - timeud > (time_s * 1000)) {
-			timeud = millis();
-			sttSendN = HIGH;
-		}
-	while (i <= plants_8) {
+		timeud = millis();
+		sttSendN = HIGH;
+	}
+	/*while (i <= plants_8) {
 		if (SttSpray[i] != BufSttSpray[i]) {
 			timeud = millis();
 			sttSendN = HIGH;
 			i = plants_8;
 		}
 		i++;
-	}
+	}*/
 	if (sttSendN == HIGH) {
 		sttSendN = LOW;
 		SendData();
@@ -233,8 +234,7 @@ void RecevierData(void) {
 			return;
 		}
 		for (uint8_t i = plants_1; i <= plants_8; i++) {
-			int HumiRece = JsRecevie[S_HUMI + String(i)];
-			SHumidity[i] = map(HumiRece,0,1023,0,100);
+			SHumidity[i] = JsRecevie[S_HUMI + String(i)];
 			Blynk.virtualWrite(CHART_HUMI_PLANTS1 + 10 * i, SHumidity[i]);
 			Blynk.virtualWrite(DISPLAY_PLANTS1 + 10 * i, SHumidity[i]);
 
@@ -244,12 +244,12 @@ void RecevierData(void) {
 		}
 	}
 }
-void checkLeverHumi(void) {
+void checkLevelHumi(void) {
 	for (uint8_t i = plants_1; i <= plants_8; i++) {
 		if (limLow[i] > SHumidity[i]) {
 			SttHumi[i] = false;
 		}
-		else if(limHigh[i] < SHumidity[i]) {
+		else if (limHigh[i] < SHumidity[i]) {
 			SttHumi[i] = true;
 		}
 	}
@@ -258,83 +258,99 @@ void ControlPumNode(void) {
 	for (uint8_t i = plants_1; i <= plants_8; i++) {
 		if (SttBAPlans[i] == HIGH) {
 			if (SttHumi[i] == true) {
-				if(SttSpray[i] != LOW){
+				if (SttSpray[i] != LOW) {
 					SttSpray[i] = LOW;
-					Blynk.virtualWrite(BUTTON_PUM_PLANTS1 + 10 * i, SttSpray[i]);
+					Blynk.virtualWrite(BUTTON_PUMP_PLANTS1 + 10 * i, SttSpray[i]);
 				}
 			}
 			else {
 				if (SttSpray[i] != HIGH) {
 					SttSpray[i] = HIGH;
-					Blynk.virtualWrite(BUTTON_PUM_PLANTS1 + 10 * i, SttSpray[i]);
+					Blynk.virtualWrite(BUTTON_PUMP_PLANTS1 + 10 * i, SttSpray[i]);
 				}
 			}
 		}
 		else
 		{
-			if (SHumidity[i] >= 99) {
+			if (SHumidity[i] >= 101) {
 				if (SttSpray[i] != LOW) {
 					SttSpray[i] = LOW;
-					Blynk.virtualWrite(BUTTON_PUM_PLANTS1 + 10 * i, SttSpray[i]);
+					Blynk.virtualWrite(BUTTON_PUMP_PLANTS1 + 10 * i, SttSpray[i]);
 				}
 			}
 		}
 	}
 }
-int  CheckLeveWater(void) {
-	leverWarter[lowWater] = digitalRead(LOW_WARTER);
-	leverWarter[HighWarter] = digitalRead(HIGH_WARTER);
+int  CheckLevelWater(void) {
+	levelWarter[lowWater] = !digitalRead(LOW_WARTER);
+	levelWarter[HighWarter] = !digitalRead(HIGH_WARTER);
+	static int pre_level = 99;
 
-	if ((leverWarter[lowWater] == HIGH) && (leverWarter[HighWarter] == HIGH)) {
-		Blynk.virtualWrite(WATER_LEVEL, 2);
-		Blynk.virtualWrite(DISPLAY_MAIN, "High lever warter");
+	if ((levelWarter[lowWater] == HIGH) && (levelWarter[HighWarter] == HIGH)) {
+		if (pre_level != 2) {
+			pre_level = 2;
+			Blynk.virtualWrite(WATER_LEVEL, 2);
+			Blynk.virtualWrite(DISPLAY_MAIN, "High level warter");
+		}
 		return 2;
 	}
-	else if ((leverWarter[lowWater] == HIGH) && (leverWarter[HighWarter] == LOW)){
-		Blynk.virtualWrite(WATER_LEVEL, 1);
-		Blynk.virtualWrite(DISPLAY_MAIN, "Mentium");
+	else if ((levelWarter[lowWater] == HIGH) && (levelWarter[HighWarter] == LOW)) {
+		if (pre_level != 1) {
+			pre_level = 1;
+			Blynk.virtualWrite(WATER_LEVEL, 1);
+			Blynk.virtualWrite(DISPLAY_MAIN, "Mentium");
+		}
 		return 1;
 	}
-	else if ((leverWarter[lowWater] == LOW) && (leverWarter[HighWarter] == LOW)) {
-		Blynk.virtualWrite(WATER_LEVEL, 0);
-		Blynk.virtualWrite(DISPLAY_MAIN, "Low lever warter!");
+	else if ((levelWarter[lowWater] == LOW) && (levelWarter[HighWarter] == LOW)) {
+		if (pre_level != 0) {
+			pre_level = 0;
+			Blynk.virtualWrite(WATER_LEVEL, 0);
+			Blynk.virtualWrite(DISPLAY_MAIN, "Low level warter!");
+		}
 		return 0;
 	}
-	else if ((leverWarter[lowWater] == LOW) && (leverWarter[HighWarter] == HIGH)) {
-		Blynk.virtualWrite(WATER_LEVEL, -1);
-		Blynk.virtualWrite(DISPLAY_MAIN, "Error senser warter!");
+	else if ((levelWarter[lowWater] == LOW) && (levelWarter[HighWarter] == HIGH)) {
+		if (pre_level != -1) {
+			pre_level = -1;
+			Blynk.virtualWrite(WATER_LEVEL, -1);
+			Blynk.virtualWrite(DISPLAY_MAIN, "Error senser warter!");
+		}
 		return -1;
 	}
 }
-void ControlPumMain(void) {
-	int sttLeverW = CheckLeveWater();
+void ControlPumpMain(void) {
+	int sttLevelW = CheckLevelWater();
 
 	if (ActivityStt == HIGH) {
-		switch (sttLeverW)
+		switch (sttLevelW)
 		{
 		case 0:
-			if (SttPumMain != HIGH) {
-				digitalWrite(PUM_MAIN, HIGH);
-				SttPumMain = HIGH;
-				Blynk.virtualWrite(BUTTON_PUM_MAIN, HIGH);
+			if (SttPumpMain != HIGH) {
+				digitalWrite(PUMP_MAIN, LOW);
+				SttPumpMain = HIGH;
+				Blynk.virtualWrite(BUTTON_PUMP_MAIN, HIGH);
 			}
 			break;
 		case 1:
-			digitalWrite(PUM_MAIN, SttPumMain);
+			digitalWrite(PUMP_MAIN, !SttPumpMain);
 			break;
 		case 2:
-			if (SttPumMain != LOW) {
-				digitalWrite(PUM_MAIN, LOW);
-				SttPumMain = LOW;
-				Blynk.virtualWrite(BUTTON_PUM_MAIN, LOW);
+			if (SttPumpMain != LOW) {
+				digitalWrite(PUMP_MAIN, HIGH);
+				SttPumpMain = LOW;
+				Blynk.virtualWrite(BUTTON_PUMP_MAIN, LOW);
 			}
+		case -1:
+			digitalWrite(PUMP_MAIN, HIGH);
+			break;
 		default:
 
 			break;
 		}
 	}
 	else {
-		digitalWrite(PUM_MAIN, SttPumMain);
+		digitalWrite(PUMP_MAIN, !SttPumpMain);
 	}
 }
 void controlLedP(uint8_t led, bool stt) {
@@ -344,35 +360,35 @@ void controlLedP(uint8_t led, bool stt) {
 		if (stt == HIGH) {
 			LedPlants1.on();
 		}
-		else 
+		else
 			LedPlants1.off();
 		break;
 	case plants_2:
 		if (stt == HIGH) {
 			LedPlants2.on();
 		}
-		else 
+		else
 			LedPlants2.off();
 		break;
 	case plants_3:
 		if (stt == HIGH) {
 			LedPlants3.on();
 		}
-		else 
+		else
 			LedPlants3.off();
 		break;
 	case plants_4:
 		if (stt == HIGH) {
 			LedPlants4.on();
 		}
-		else 
+		else
 			LedPlants4.off();
 		break;
 	case plants_5:
 		if (stt == HIGH) {
 			LedPlants5.on();
 		}
-		else 
+		else
 			LedPlants5.off();
 		break;
 	case plants_6:
@@ -386,14 +402,14 @@ void controlLedP(uint8_t led, bool stt) {
 		if (stt == HIGH) {
 			LedPlants7.on();
 		}
-		else 
+		else
 			LedPlants7.off();
 		break;
 	case plants_8:
 		if (stt == HIGH) {
 			LedPlants8.on();
 		}
-		else 
+		else
 			LedPlants8.off();
 		break;
 	}
@@ -401,62 +417,65 @@ void controlLedP(uint8_t led, bool stt) {
 
 BLYNK_CONNECTED() {
 	rtc.begin();
-	Blynk.syncVirtual(BUTTON_PUM_MAIN);
+	Blynk.syncVirtual(BUTTON_PUMP_MAIN);
 	Blynk.syncVirtual(BUTTON_AUTO);
 
-	Blynk.syncVirtual(BUTTON_PUM_PLANTS1);
+	Blynk.syncVirtual(BUTTON_PUMP_PLANTS1);
 	Blynk.syncVirtual(BUTTON_AUTO_PLANTS1);
 	Blynk.syncVirtual(HIGHER_LIMIT_PLANTS1);
 	Blynk.syncVirtual(LOWER_LIMIT_PLANTS1);
 
-	Blynk.syncVirtual(BUTTON_PUM_PLANTS2);
+	Blynk.syncVirtual(BUTTON_PUMP_PLANTS2);
 	Blynk.syncVirtual(BUTTON_AUTO_PLANTS2);
 	Blynk.syncVirtual(HIGHER_LIMIT_PLANTS2);
 	Blynk.syncVirtual(LOWER_LIMIT_PLANTS2);
 
-	Blynk.syncVirtual(BUTTON_PUM_PLANTS3);
+	Blynk.syncVirtual(BUTTON_PUMP_PLANTS3);
 	Blynk.syncVirtual(BUTTON_AUTO_PLANTS3);
 	Blynk.syncVirtual(HIGHER_LIMIT_PLANTS3);
 	Blynk.syncVirtual(LOWER_LIMIT_PLANTS3);
 
-	Blynk.syncVirtual(BUTTON_PUM_PLANTS4);
+	Blynk.syncVirtual(BUTTON_PUMP_PLANTS4);
 	Blynk.syncVirtual(BUTTON_AUTO_PLANTS4);
 	Blynk.syncVirtual(HIGHER_LIMIT_PLANTS4);
 	Blynk.syncVirtual(LOWER_LIMIT_PLANTS4);
 
-	Blynk.syncVirtual(BUTTON_PUM_PLANTS5);
+	Blynk.syncVirtual(BUTTON_PUMP_PLANTS5);
 	Blynk.syncVirtual(BUTTON_AUTO_PLANTS5);
 	Blynk.syncVirtual(HIGHER_LIMIT_PLANTS5);
 	Blynk.syncVirtual(LOWER_LIMIT_PLANTS5);
 
-	Blynk.syncVirtual(BUTTON_PUM_PLANTS6);
+	Blynk.syncVirtual(BUTTON_PUMP_PLANTS6);
 	Blynk.syncVirtual(BUTTON_AUTO_PLANTS6);
 	Blynk.syncVirtual(HIGHER_LIMIT_PLANTS6);
 	Blynk.syncVirtual(LOWER_LIMIT_PLANTS6);
 
-	Blynk.syncVirtual(BUTTON_PUM_PLANTS7);
+	Blynk.syncVirtual(BUTTON_PUMP_PLANTS7);
 	Blynk.syncVirtual(BUTTON_AUTO_PLANTS7);
 	Blynk.syncVirtual(HIGHER_LIMIT_PLANTS7);
 	Blynk.syncVirtual(LOWER_LIMIT_PLANTS7);
 
-	Blynk.syncVirtual(BUTTON_PUM_PLANTS8);
+	Blynk.syncVirtual(BUTTON_PUMP_PLANTS8);
 	Blynk.syncVirtual(BUTTON_AUTO_PLANTS8);
 	Blynk.syncVirtual(HIGHER_LIMIT_PLANTS8);
 	Blynk.syncVirtual(LOWER_LIMIT_PLANTS8);
 
-	CheckLeveWater();
+	CheckLevelWater();
 	SendData();
 }
 //ControlMain
-BLYNK_WRITE(BUTTON_PUM_MAIN) {
-	SttPumMain = param.asInt();
+BLYNK_WRITE(BUTTON_PUMP_MAIN) {
+	SttPumpMain = param.asInt();
 }
 BLYNK_WRITE(BUTTON_AUTO) {
 	ActivityStt = param.asInt();
 }
+BLYNK_READ(WATER_LEVEL) {
+	CheckLevelWater();
+}
 
 //Plants1
-BLYNK_WRITE(BUTTON_PUM_PLANTS1) {
+BLYNK_WRITE(BUTTON_PUMP_PLANTS1) {
 	SttSpray[plants_1] = param.asInt();
 }
 BLYNK_WRITE(BUTTON_AUTO_PLANTS1) {
@@ -478,7 +497,7 @@ BLYNK_WRITE(LOWER_LIMIT_PLANTS1) {
 }
 
 //Plants2
-BLYNK_WRITE(BUTTON_PUM_PLANTS2) {
+BLYNK_WRITE(BUTTON_PUMP_PLANTS2) {
 	SttSpray[plants_2] = param.asInt();
 }
 BLYNK_WRITE(BUTTON_AUTO_PLANTS2) {
@@ -500,7 +519,7 @@ BLYNK_WRITE(LOWER_LIMIT_PLANTS2) {
 }
 
 //Plant3
-BLYNK_WRITE(BUTTON_PUM_PLANTS3) {
+BLYNK_WRITE(BUTTON_PUMP_PLANTS3) {
 	SttSpray[plants_3] = param.asInt();
 }
 BLYNK_WRITE(BUTTON_AUTO_PLANTS3) {
@@ -522,7 +541,7 @@ BLYNK_WRITE(LOWER_LIMIT_PLANTS3) {
 }
 
 //Plants4
-BLYNK_WRITE(BUTTON_PUM_PLANTS4) {
+BLYNK_WRITE(BUTTON_PUMP_PLANTS4) {
 	SttSpray[plants_4] = param.asInt();
 }
 BLYNK_WRITE(BUTTON_AUTO_PLANTS4) {
@@ -544,7 +563,7 @@ BLYNK_WRITE(LOWER_LIMIT_PLANTS4) {
 }
 
 //Plants5
-BLYNK_WRITE(BUTTON_PUM_PLANTS5) {
+BLYNK_WRITE(BUTTON_PUMP_PLANTS5) {
 	SttSpray[plants_5] = param.asInt();
 }
 BLYNK_WRITE(BUTTON_AUTO_PLANTS5) {
@@ -566,7 +585,7 @@ BLYNK_WRITE(LOWER_LIMIT_PLANTS5) {
 }
 
 //Plants6
-BLYNK_WRITE(BUTTON_PUM_PLANTS6) {
+BLYNK_WRITE(BUTTON_PUMP_PLANTS6) {
 	SttSpray[plants_6] = param.asInt();
 }
 BLYNK_WRITE(BUTTON_AUTO_PLANTS6) {
@@ -588,7 +607,7 @@ BLYNK_WRITE(LOWER_LIMIT_PLANTS6) {
 }
 
 //Plants7
-BLYNK_WRITE(BUTTON_PUM_PLANTS7) {
+BLYNK_WRITE(BUTTON_PUMP_PLANTS7) {
 	SttSpray[plants_7] = param.asInt();
 }
 BLYNK_WRITE(BUTTON_AUTO_PLANTS7) {
@@ -610,7 +629,7 @@ BLYNK_WRITE(LOWER_LIMIT_PLANTS7) {
 }
 
 //Plants8
-BLYNK_WRITE(BUTTON_PUM_PLANTS8) {
+BLYNK_WRITE(BUTTON_PUMP_PLANTS8) {
 	SttSpray[plants_8] = param.asInt();
 }
 BLYNK_WRITE(BUTTON_AUTO_PLANTS8) {
@@ -638,7 +657,7 @@ String Owner = "tdhieu756@gmail.com";
 String Version = "V1.8.9";
 void setup()
 {
-	Serial.begin(128000);
+	Serial.begin(115200);
 	ConfigIO();
 	delay(500);
 
@@ -654,8 +673,8 @@ void loop()
 {
 	Blynk.run();
 	RecevierData();
-	checkLeverHumi();
+	checkLevelHumi();
 	updateNode(10);
 	ControlPumNode();
-	ControlPumMain();
+	ControlPumpMain();
 }
