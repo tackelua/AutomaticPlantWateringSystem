@@ -1,0 +1,4 @@
+ArduinoBoard/*
+ESP8266Board/*
+!/ArduinoBoard/*.ino
+!/ESP8266Board/*.ino
