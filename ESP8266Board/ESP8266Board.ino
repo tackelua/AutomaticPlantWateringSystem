@@ -140,8 +140,8 @@ WidgetLED						LedPlants8(LED_STATUS_PLANTS8);
 //Data Json
 #define SPRAY					"S"
 #define	S_HUMI					"H"
-#define	ON						"T"
-#define	OFF						"F"
+#define	ON						"O"
+#define	OFF						"O"
 
 //Define Harware configuration
 #ifdef HieuTest
@@ -158,7 +158,7 @@ WidgetLED						LedPlants8(LED_STATUS_PLANTS8);
 
 //Value
 bool	sttSendN = 0;
-bool	levelWarter[2];
+bool	leverWarter[2];
 bool	SttPumMain;
 bool	ActivityStt;
 
@@ -167,7 +167,7 @@ bool	SttSpray[8], BufSttSpray[8];
 int		limLow[8], limHigh[8];
 int		SHumidity[8];
 
-enum LevelWarter
+enum LeverWarter
 {
 	lowWater, HighWarter
 };
@@ -244,7 +244,7 @@ void RecevierData(void) {
 		}
 	}
 }
-void checkLevelHumi(void) {
+void checkLeverHumi(void) {
 	for (uint8_t i = plants_1; i <= plants_8; i++) {
 		if (limLow[i] > SHumidity[i]) {
 			SttHumi[i] = false;
@@ -282,36 +282,35 @@ void ControlPumNode(void) {
 	}
 }
 int  CheckLeveWater(void) {
-	levelWarter[lowWater] = digitalRead(LOW_WARTER);
-	levelWarter[HighWarter] = digitalRead(HIGH_WARTER);
+	leverWarter[lowWater] = digitalRead(LOW_WARTER);
+	leverWarter[HighWarter] = digitalRead(HIGH_WARTER);
 
-	if ((levelWarter[lowWater] == HIGH) && (levelWarter[HighWarter] == HIGH)) {
+	if ((leverWarter[lowWater] == HIGH) && (leverWarter[HighWarter] == HIGH)) {
 		Blynk.virtualWrite(WATER_LEVEL, 2);
-		Blynk.virtualWrite(DISPLAY_MAIN, "High level warter");
+		Blynk.virtualWrite(DISPLAY_MAIN, "High lever warter");
 		return 2;
 	}
-	else if ((levelWarter[lowWater] == HIGH) && (levelWarter[HighWarter] == LOW)){
+	else if ((leverWarter[lowWater] == HIGH) && (leverWarter[HighWarter] == LOW)){
 		Blynk.virtualWrite(WATER_LEVEL, 1);
 		Blynk.virtualWrite(DISPLAY_MAIN, "Mentium");
 		return 1;
 	}
-	else if ((levelWarter[lowWater] == LOW) && (levelWarter[HighWarter] == LOW)) {
+	else if ((leverWarter[lowWater] == LOW) && (leverWarter[HighWarter] == LOW)) {
 		Blynk.virtualWrite(WATER_LEVEL, 0);
-		Blynk.virtualWrite(DISPLAY_MAIN, "Low level warter!");
+		Blynk.virtualWrite(DISPLAY_MAIN, "Low lever warter!");
 		return 0;
 	}
-	else if ((levelWarter[lowWater] == LOW) && (levelWarter[HighWarter] == HIGH)) {
+	else if ((leverWarter[lowWater] == LOW) && (leverWarter[HighWarter] == HIGH)) {
 		Blynk.virtualWrite(WATER_LEVEL, -1);
 		Blynk.virtualWrite(DISPLAY_MAIN, "Error senser warter!");
 		return -1;
 	}
 }
 void ControlPumMain(void) {
-
-	int sttLevelW = CheckLeveWater();
+	int sttLeverW = CheckLeveWater();
 
 	if (ActivityStt == HIGH) {
-		switch (sttLevelW)
+		switch (sttLeverW)
 		{
 		case 0:
 			if (SttPumMain != HIGH) {
@@ -639,7 +638,7 @@ String Owner = "tdhieu756@gmail.com";
 String Version = "V1.8.9";
 void setup()
 {
-	Serial.begin(115200);
+	Serial.begin(128000);
 	ConfigIO();
 	delay(500);
 
@@ -655,7 +654,7 @@ void loop()
 {
 	Blynk.run();
 	RecevierData();
-	checkLevelHumi();
+	checkLeverHumi();
 	updateNode(10);
 	ControlPumNode();
 	ControlPumMain();
