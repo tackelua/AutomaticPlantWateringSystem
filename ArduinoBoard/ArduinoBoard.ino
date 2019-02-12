@@ -4,7 +4,7 @@
     Name:       NodeControlMrTinh.ino
     Created:	7/12/2018 8:54:15 AM
     Author:     DESKTOP-PVDO71Q\tdhie
-	Version:	0.3
+	Version:	0.4
 */
 
 // Define User Types below here or use a .h file
@@ -127,6 +127,7 @@ void Control() {
 void setup()
 {
 	Serial.begin(115200);
+	Serial.setTimeout(100);
 	ConfigIO();
 	delay(500);
 	ReadSS(0); 

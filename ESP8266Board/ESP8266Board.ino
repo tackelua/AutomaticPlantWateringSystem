@@ -4,7 +4,7 @@
 	Name:       HubControlTinh.ino
 	Created:	7/13/2018 8:43:13 AM
 	Author:     DESKTOP-PVDO71Q\tdhie
-	Version:	0.3
+	Version:	0.4
 */
 
 // Define User Types below here or use a .h file
@@ -206,7 +206,6 @@ void updateNode(uint8_t time_s) {
 	static unsigned long timeud = millis();
 
 	if (millis() - timeud > (time_s * 1000)) {
-		timeud = millis();
 		sttSendN = HIGH;
 	}
 	/*while (i <= plants_8) {
@@ -220,6 +219,7 @@ void updateNode(uint8_t time_s) {
 	if (sttSendN == HIGH) {
 		sttSendN = LOW;
 		SendData();
+		timeud = millis();
 	}
 }
 void RecevierData(void) {
@@ -319,7 +319,15 @@ int  CheckLevelWater(void) {
 		return -1;
 	}
 }
-void ControlPumpMain(void) {
+void ControlPumpMain(unsigned long interval) {
+	static unsigned long t = millis();
+	if (millis() - t > interval) {
+		interval = millis();
+	}
+	else {
+		return;
+	}
+
 	int sttLevelW = CheckLevelWater();
 
 	if (ActivityStt == HIGH) {
@@ -658,6 +666,7 @@ String Version = "V1.8.9";
 void setup()
 {
 	Serial.begin(115200);
+	Serial.setTimeout(100);
 	ConfigIO();
 	delay(500);
 
@@ -674,7 +683,7 @@ void loop()
 	Blynk.run();
 	RecevierData();
 	checkLevelHumi();
-	updateNode(10);
+	updateNode(5);
 	ControlPumNode();
-	ControlPumpMain();
+	ControlPumpMain(100);
 }
